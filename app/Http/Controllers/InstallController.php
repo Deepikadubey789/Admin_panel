@@ -96,15 +96,15 @@ class InstallController extends Controller
         $username = preg_replace('/\s+/', '', $request['username']);
         $purchaseKey = preg_replace('/\s+/', '', $request['purchase_key']);
 
-        $this->setEnvironmentValue(envKey: 'ADMIN_IDENTIFIER', envValue: null);
-        $this->setEnvironmentValue('SOFTWARE_ID', null);
-        $this->setEnvironmentValue('BUYER_USERNAME', null);
-        $this->setEnvironmentValue('PURCHASE_CODE', null);
+        $this->setEnvironmentValue(envKey: 'ADMIN_IDENTIFIER', envValue: $adminEmail);
+        $this->setEnvironmentValue('SOFTWARE_ID', 'NDAyMjQ3NzI=');
+        $this->setEnvironmentValue('BUYER_USERNAME', $username);
+        $this->setEnvironmentValue('PURCHASE_CODE', $purchaseKey);
 
-        session()->put('admin_name', null);
-        session()->put('admin_email', null);
-        session()->put('username', null);
-        session()->put('purchase_key', null);
+        session()->put('admin_name', $request['name']);
+        session()->put('admin_email', $adminEmail);
+        session()->put('username', $username);
+        session()->put('purchase_key', $purchaseKey);
 
         $response = $this->getRequestConfig(
             username: $username,
