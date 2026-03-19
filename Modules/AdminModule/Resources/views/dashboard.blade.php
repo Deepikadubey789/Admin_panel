@@ -7,7 +7,7 @@
     <div class="main-content">
         <div class="container-fluid">
             @if(access_checker('dashboard'))
-                <div class="row mb-4 g-4">
+                <!-- <div class="row mb-4 g-4">
                     <div class="col-lg-3 col-sm-6">
                         <div class="business-summary business-summary-customers">
                             <h2>{{with_currency_symbol(data_get($data[0], 'top_cards.total_commission_earning', 0) + data_get($data[0], 'top_cards.total_fee_earning', 0) + data_get($data[0], 'top_cards.total_subscription_earning', 0))}}</h2>
@@ -44,6 +44,72 @@
                                  alt="">
                         </div>
                     </div>
+                </div> -->
+                <div class="row mb-4 g-4">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="text-sm mb-1 text-uppercase font-weight-bold text-muted" style="font-size:11px;">{{translate('total_earning')}}</p>
+                                    <h4 class="mb-0 font-weight-bolder">{{with_currency_symbol(data_get($data[0], 'top_cards.total_commission_earning', 0) + data_get($data[0], 'top_cards.total_fee_earning', 0) + data_get($data[0], 'top_cards.total_subscription_earning', 0))}}</h4>
+                                </div>
+                                <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:linear-gradient(to top left,#ff0080,#7928ca);border-radius:12px;"
+                                >
+                                    <img src="{{asset('public/assets/admin-module')}}/img/icons/customers.png"  style="width:24px;filter:invert(1)" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="text-sm mb-1 text-uppercase font-weight-bold text-muted" style="font-size:11px;">{{translate('commission_earning')}}</p>
+                                    <h4 class="mb-0 font-weight-bolder">{{with_currency_symbol(data_get($data[0], 'top_cards.total_commission_earning', 0))}}</h4>
+                                </div>
+                                <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:linear-gradient(to top left,#ff0080,#7928ca);border-radius:12px;"
+                                >
+                                <img src="{{asset('public/assets/admin-module')}}/img/icons/total-earning.png"  style="width:24px;filter:invert(1)" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="text-sm mb-1 text-uppercase font-weight-bold text-muted" style="font-size:11px;">{{translate('Total Fee Earning')}}</p>
+                                    <h4 class="mb-0 font-weight-bolder">{{with_currency_symbol(data_get($data[0], 'top_cards.total_fee_earning', 0))}}</h4>
+                                </div>
+                                <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:linear-gradient(to top left,#ff0080,#7928ca);border-radius:12px;"
+                                >                                    
+                                <img src="{{asset('public/assets/admin-module')}}/img/icons/providers.png"  style="width:24px;filter:invert(1)" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="text-sm mb-1 text-uppercase font-weight-bold text-muted" style="font-size:11px;">{{translate('providers')}}</p>
+                                    <h4 class="mb-0 font-weight-bolder">{{$data[0]['top_cards']['total_provider']}}</h4>
+                                </div>
+                                <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:linear-gradient(to top left,#ff0080,#7928ca);border-radius:12px;"
+                                >
+                                 <img src="{{asset('public/assets/admin-module')}}/img/icons/services.png" style="width:24px;filter:invert(1)" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </div>
                 <div class="row g-4">
                     <div class="col-lg-9">

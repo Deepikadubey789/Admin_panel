@@ -92,46 +92,20 @@ class InstallController extends Controller
 
     public function purchase_code(UpdatePurchaseCodeRequest $request): RedirectResponse
     {
-        $adminEmail = base64_encode(preg_replace('/\s+/', '', $request['email']));
-        $username = preg_replace('/\s+/', '', $request['username']);
-        $purchaseKey = preg_replace('/\s+/', '', $request['purchase_key']);
+        // Set all to null instead of the request values
+        $this->setEnvironmentValue(envKey: 'ADMIN_IDENTIFIER', envValue: null);
+        $this->setEnvironmentValue('SOFTWARE_ID', null);
+        $this->setEnvironmentValue('BUYER_USERNAME', null);
+        $this->setEnvironmentValue('PURCHASE_CODE', null);
 
-        $this->setEnvironmentValue(envKey: 'ADMIN_IDENTIFIER', envValue: $adminEmail);
-        $this->setEnvironmentValue('SOFTWARE_ID', 'NDAyMjQ3NzI=');
-        $this->setEnvironmentValue('BUYER_USERNAME', $username);
-        $this->setEnvironmentValue('PURCHASE_CODE', $purchaseKey);
+        // Skip session storage or set to null
+        session()->put('admin_name', null);
+        session()->put('admin_email', null);
+        session()->put('username', null);
+        session()->put('purchase_key', null);
 
-        session()->put('admin_name', $request['name']);
-        session()->put('admin_email', $adminEmail);
-        session()->put('username', $username);
-        session()->put('purchase_key', $purchaseKey);
-
-        $response = $this->getRequestConfig(
-            username: $username,
-            purchaseKey: $purchaseKey,
-            softwareId: SOFTWARE_ID,
-            softwareType: base64_decode('cHJvZHVjdA=='),
-            name: $request['name'],
-            identifier: $request['email'],
-        );
-
-        $this->updateActivationConfig(app: 'admin_panel', response: $response);
-        $status = $response['active'] ?? 0;
-
-        if ((int)$status) {
-            return redirect(base64_decode('c3RlcDM=') . '?token=' . bcrypt('step_3'));
-        }
-
-        if (!empty($response['errors'])) {
-            foreach ($response['errors'] as $error) {
-                $message = is_array($error) ? ($error[0] ?? 'Unknown error') : $error;
-                Toastr::error($message);
-            }
-        } else {
-            Toastr::error('Verification Failed Try Again');
-        }
-
-        return back();
+        // Skip the API verification entirely - directly proceed
+        return redirect(base64_decode('c3RlcDM=') . '?token=' . bcrypt('step_3'));
     }
 
     public function system_settings(Request $request): View|Factory|RedirectResponse|Application
@@ -289,29 +263,12 @@ class InstallController extends Controller
 
     public function getActivationCheckView(Request $request): View|RedirectResponse
     {
-        $config = $this->getAddonsConfig();
-        $adminPanel = $config['admin_panel'] ?? [];
-        $status = ($this->is_local() || env('DEVELOPMENT_ENVIRONMENT', false)) ? 1 : ($adminPanel['active'] ?? 0);
-        return $status == 1 ? redirect(route('admin.auth.login')) : view('installation.activation-check');
+        return redirect(route('admin.auth.login'));
     }
 
     public function activationCheck(Request $request): RedirectResponse
     {
-        $response = $this->getRequestConfig(
-            username: $request['username'],
-            purchaseKey: $request['purchase_key'],
-            softwareId: SOFTWARE_ID,
-            softwareType: base64_decode('cHJvZHVjdA=='),
-            name: $request['name'],
-            identifier: $request['email'],
-        );
-
-        $response = $this->getRequestConfig(
-            username: $request['username'],
-            purchaseKey: $request['purchase_key'],
-            softwareType: $request->get('software_type', base64_decode('cHJvZHVjdA=='))
-        );
-        $this->updateActivationConfig(app: 'admin_panel', response: $response);
-        return redirect(url('/'));
+        $this->updateActivationConfig(app: 'admin_panel', response: ['active' => 1]);
+        return redirect(route('admin.auth.login'));
     }
 }

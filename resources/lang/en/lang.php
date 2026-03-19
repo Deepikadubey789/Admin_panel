@@ -6243,4 +6243,8 @@ _Message' => 'Customer notification for provider bid offer
   'Turning on Maintenance mode will temporarily close your online site. So that the admin can do important updates or fixes' => 'Turning on Maintenance mode will temporarily close your online site. So that the admin can do important updates or fixes',
   'pdo' => 'Pdo',
   'openssl' => 'Openssl',
+  'mbstring' => 'Mbstring',
+  'json' => 'Json',
+  'ctype' => 'Ctype',
+  'bcmath' => 'Bcmath',
 );
