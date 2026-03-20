@@ -34,14 +34,14 @@ $denied_providers = \Modules\ProviderManagement\Entities\Provider::ofApproval(0)
 $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/', defaultPath: 'public/assets/placeholder.png');
 ?>
 
-<aside class="aside">
+<aside class="aside custom-sidebar">
     <div class="aside-header">
         <a href="{{route('admin.dashboard')}}" class="logo d-flex gap-2">
             <img class="main-logo onerror-image" src="{{ $logo }}" alt="{{ translate('image') }}">
         </a>
 
         <button class="toggle-menu-button aside-toggle border-0 bg-transparent p-0 dark-color">
-            <span class="material-icons">menu</span>
+        <div class="nav-icon-box"><span class="material-icons">menu</span></div>
         </button>
     </div>
 
@@ -62,7 +62,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
 
             <li>
                 <a href="{{route('admin.dashboard')}}" class="{{request()->is('admin/dashboard')?'active-menu':''}}">
-                    <span class="material-icons" title="{{translate('dashboard')}}">dashboard</span>
+                <div class="nav-icon-box"> <span class="material-icons" title="{{translate('dashboard')}}">dashboard</span></div>
                     <span class="link-title">{{translate('dashboard')}}</span>
                 </a>
             </li>
@@ -73,7 +73,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 </li>
                 <li class="has-sub-item {{request()->is('admin/booking/*')?'sub-menu-opened':''}}">
                     <a href="#" class="{{request()->is('admin/booking/*')?'active-menu':''}}">
-                        <span class="material-icons" title="Bookings">calendar_month</span>
+                    <div class="nav-icon-box">  <span class="material-icons" title="Bookings">calendar_month</span></div>
                         <span class="link-title">{{translate('bookings')}}</span>
                     </a>
                     <ul class="nav sub-menu">
@@ -136,7 +136,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
             @canany(['discount_view', 'discount_add'])
                 <li class="has-sub-item {{request()->is('admin/discount/*')?'sub-menu-opened':''}}">
                     <a href="#" class="{{request()->is('admin/discount/*')?'active-menu':''}}">
-                        <span class="material-icons" title="{{translate('discounts')}}">redeem</span>
+                    <div class="nav-icon-box">     <span class="material-icons" title="{{translate('discounts')}}">redeem</span></div>
                         <span class="link-title">{{translate('discounts')}}</span>
                     </a>
                     <ul class="nav sub-menu">
@@ -162,7 +162,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
             @canany(['coupon_view', 'coupon_add'])
                 <li class="has-sub-item {{request()->is('admin/coupon/*')?'sub-menu-opened':''}}">
                     <a href="#" class="{{request()->is('admin/coupon/*')?'active-menu':''}}">
-                        <span class="material-icons" title="{{translate('coupons')}}">sell</span>
+                    <div class="nav-icon-box">   <span class="material-icons" title="{{translate('coupons')}}">sell</span></div>
                         <span class="link-title">{{translate('coupons')}}</span>
                     </a>
                     <ul class="nav sub-menu">
@@ -188,8 +188,8 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
             @canany(['bonus_view', 'bonus_add'])
                 <li class="has-sub-item {{request()->is('admin/bonus/*')?'sub-menu-opened':''}}">
                     <a href="#" class="{{request()->is('admin/bonus/*')?'active-menu':''}}">
-                    <span class="material-icons matarial-symbols-outlined"
-                          title="{{translate('bonus')}}">price_change</span>
+                    <div class="nav-icon-box">   <span class="material-icons matarial-symbols-outlined"
+                          title="{{translate('bonus')}}">price_change</span></div>
                         <span class="link-title">{{translate('Wallet Bonus')}}</span>
                     </a>
                     <ul class="nav sub-menu">
@@ -215,7 +215,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
             @canany(['campaign_view', 'campaign_add'])
                 <li class="has-sub-item {{request()->is('admin/campaign/*')?'sub-menu-opened':''}}">
                     <a href="#" class="{{request()->is('admin/campaign/*')?'active-menu':''}}">
-                        <span class="material-icons" title="{{translate('campaigns')}}">campaign</span>
+                    <div class="nav-icon-box">     <span class="material-icons" title="{{translate('campaigns')}}">campaign</span></div>
                         <span class="link-title">{{translate('campaigns')}}</span>
                     </a>
                     <ul class="nav sub-menu">
@@ -241,7 +241,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
             @canany(['advertisement_view', 'advertisement_add'])
                 <li class="has-sub-item {{request()->is('admin/advertisements/*')?'sub-menu-opened':''}}">
                     <a href="#" class="{{request()->is('admin/advertisements/*')?'active-menu':''}}">
-                        <span class="material-icons" title="{{translate('advertisements')}}">campaign</span>
+                    <div class="nav-icon-box"> <span class="material-icons" title="{{translate('advertisements')}}">campaign</span></div>
                         <span class="link-title">{{translate('advertisements')}}</span>
                     </a>
                     <ul class="nav sub-menu">
@@ -268,7 +268,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li>
                     <a href="{{route('admin.banner.create')}}"
                        class="{{request()->is('admin/banner/*')?'active-menu':''}}">
-                        <span class="material-icons" title="{{translate('promotional_banners')}}">flag</span>
+                       <div class="nav-icon-box">       <span class="material-icons" title="{{translate('promotional_banners')}}">flag</span></div>
                         <span class="link-title">{{translate('promotional_banners')}}</span>
                     </a>
                 </li>
@@ -282,7 +282,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
             @canany(['push_notification_add', 'push_notification_view'])
                 <li>
                     <a href="{{route('admin.push-notification.create')}}" class="{{request()->is('admin/push-notification/*')?'active-menu':''}}">
-                        <span class="material-icons" title="{{translate('push_notification')}}">send</span>
+                    <div class="nav-icon-box">     <span class="material-icons" title="{{translate('push_notification')}}">send</span></div>
                         <span class="link-title">{{translate('Send Notifications')}}</span>
                     </a>
                 </li>
@@ -292,7 +292,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li>
                     <a href="{{route('admin.configuration.get-notification-setting', ['type' => 'customers'])}}"
                        class="{{request()->is('admin/configuration/get-notification-setting')?'active-menu':''}}">
-                        <span class="material-icons" title="{{translate('push_notification')}}">notifications</span>
+                       <div class="nav-icon-box">    <span class="material-icons" title="{{translate('push_notification')}}">notifications</span></div>
                         <span class="link-title"> {{translate('Push Notification')}}</span>
                     </a>
                 </li>
@@ -300,7 +300,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
             @canany(['notification_channel_view', 'notification_channel_add'])
                 <li>
                     <a href="{{route('admin.business-settings.notification-channel', ['notification_type' => 'user'])}}" class="{{request()->is('admin/business-settings/notification-channel') ?'active-menu':''}}">
-                        <span class="material-icons" title="{{translate('push_notification')}}">notifications_active</span>
+                    <div class="nav-icon-box">      <span class="material-icons" title="{{translate('push_notification')}}">notifications_active</span></div>
                         <span class="link-title"> {{translate('Notification Channel')}}</span>
 
                     </a>
@@ -318,7 +318,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li>
                     <a href="{{route('admin.provider.onboarding_request', ['status'=>'onboarding'])}}"
                        class="{{request()->is('admin/provider/onboarding*')?'active-menu':''}}">
-                        <span class="material-icons" title="{{translate('Onboarding_Request')}}">description</span>
+                       <div class="nav-icon-box">    <span class="material-icons" title="{{translate('Onboarding_Request')}}">description</span></div>
                         <span class="link-title">{{translate('Onboarding_Request')}} <span
                                 class="count">{{$pending_providers + $denied_providers}}</span></span>
                     </a>
@@ -328,7 +328,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li class="has-sub-item  {{(request()->is('admin/provider/list') || request()->is('admin/provider/create') || request()->is('admin/provider/details*') || request()->is('admin/provider/edit*') || request()->is('admin/provider/collect-cash*'))?'sub-menu-opened':''}}">
                     <a href="#"
                        class="{{(request()->is('admin/provider/list') || request()->is('admin/provider/create') || request()->is('admin/provider/details*') || request()->is('admin/provider/edit*') || request()->is('admin/provider/collect-cash*'))?'active-menu':''}}">
-                        <span class="material-icons" title="Providers">engineering</span>
+                       <div class="nav-icon-box">  <span class="material-icons" title="Providers">engineering</span></div>
                         <span class="link-title">{{translate('providers')}}</span>
                     </a>
                     <ul class="nav sub-menu">
@@ -350,7 +350,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li class="has-sub-item  {{request()->is('admin/withdraw/method*')||request()->is('admin/withdraw/method/create')||request()->is('admin/withdraw/method/edit*') || request()->is('admin/withdraw/request*') ?'sub-menu-opened':''}}">
                     <a href="#"
                        class="{{request()->is('admin/withdraw/method*')||request()->is('admin/withdraw/method/create')||request()->is('admin/withdraw/method/edit*') || request()->is('admin/withdraw/request*') ?'active-menu':''}}">
-                        <span class="material-icons" title="{{translate('withdraw_methods')}}">payments</span>
+                       <div class="nav-icon-box">     <span class="material-icons" title="{{translate('withdraw_methods')}}">payments</span></div>
                         <span class="link-title">{{translate('Withdraws')}}</span>
                     </a>
                     <ul class="nav sub-menu">
@@ -383,7 +383,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li>
                     <a href="{{route('admin.zone.create')}}"
                        class="{{request()->is('admin/zone/*')?'active-menu':''}}">
-                        <span class="material-icons" title="{{translate('service_zones')}}">map</span>
+                       <div class="nav-icon-box">     <span class="material-icons" title="{{translate('service_zones')}}">map</span></div>
                         <span class="link-title">{{translate('Service Zones Setup')}}</span>
                     </a>
                 </li>
@@ -392,7 +392,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li class="has-sub-item {{(request()->is('admin/category/*') || request()->is('admin/sub-category/*'))?'sub-menu-opened':''}}">
                     <a href="#"
                        class="{{(request()->is('admin/category/*') || request()->is('admin/sub-category/*'))?'active-menu':''}}">
-                        <span class="material-icons" title="Service Categories">category</span>
+                       <div class="nav-icon-box">      <span class="material-icons" title="Service Categories">category</span></div>
                         <span class="link-title">{{translate('Categories')}}</span>
                     </a>
                     <ul class="nav sub-menu">
@@ -414,7 +414,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
             @canany(['service_view','service_add'])
                 <li class="has-sub-item {{request()->is('admin/service/*')?'sub-menu-opened':''}}">
                     <a href="#" class="{{request()->is('admin/service/*')?'active-menu':''}}">
-                        <span class="material-icons" title="Services">design_services</span>
+                    <div class="nav-icon-box">      <span class="material-icons" title="Services">design_services</span></div>
                         <span class="link-title">{{translate('services')}}</span>
                     </a>
                     <ul class="nav flex-column sub-menu">
@@ -456,7 +456,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li class="has-sub-item {{request()->is('admin/customer/list')||request()->is('admin/customer/create') ?'sub-menu-opened':''}}">
                     <a href="#"
                        class="{{request()->is('admin/customer/list') || request()->is('admin/customer/detail*') || request()->is('admin/customer/edit/*') ||request()->is('admin/customer/create')?'active-menu':''}}">
-                        <span class="material-icons" title="Customers">person_outline</span>
+                       <div class="nav-icon-box">     <span class="material-icons" title="Customers">person_outline</span></div>
                         <span class="link-title">{{translate('customers')}}</span>
                     </a>
                     <ul class="nav sub-menu">
@@ -483,7 +483,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
             @canany(['wallet_add','wallet_view'])
                 <li class="has-sub-item {{request()->is('admin/customer/wallet*')?'sub-menu-opened':''}}">
                     <a href="#" class="{{request()->is('admin/customer/wallet*')?'active-menu':''}}">
-                        <span class="material-icons" title="Customers">wallet</span>
+                    <div class="nav-icon-box">      <span class="material-icons" title="Customers">wallet</span></div>
                         <span class="link-title">{{translate('customer_wallet')}}</span>
                     </a>
                     <ul class="nav sub-menu">
@@ -510,7 +510,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
             @can('point_view')
                 <li class="has-sub-item {{request()->is('admin/customer/loyalty-point*')?'sub-menu-opened':''}}">
                     <a href="#" class="{{request()->is('admin/customer/loyalty-point*')?'active-menu':''}}">
-                        <span class="material-icons" title="Customers">paid</span>
+                    <div class="nav-icon-box">  <span class="material-icons" title="Customers">paid</span></div>
                         <span class="link-title">{{translate('loyalty_point')}}</span>
                     </a>
                     <ul class="nav sub-menu">
@@ -528,7 +528,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li>
                     <a href="{{route('admin.customer.newsletter.index')}}"
                        class="{{request()->is('admin/customer/newsletter/*')?'active-menu':''}}">
-                        <span class="material-icons" title="{{translate('subscribed_newsletter')}}">email</span>
+                       <div class="nav-icon-box"> <span class="material-icons" title="{{translate('subscribed_newsletter')}}">email</span></div>
                         <span class="link-title">{{translate('Subscribed Newsletter')}}</span>
                     </a>
                 </li>
@@ -541,7 +541,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
             @canany(['role_view', 'role_add'])
                 <li>
                     <a href="{{route('admin.role.index')}}" class="{{request()->is('admin/role/*')?'active-menu':''}}">
-                        <span class="material-icons" title="Employee">settings</span>
+                    <div class="nav-icon-box">   <span class="material-icons" title="Employee">settings</span></div>
                         <span class="link-title">{{translate('Employee Role Setup')}}</span>
                     </a>
                 </li>
@@ -550,7 +550,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li>
                     <a href="{{route('admin.employee.index')}}"
                        class="{{request()->is('admin/employee/list') ||  request()->is('admin/employee/edit/*') ? 'active-menu':''}}">
-                        <span class="material-icons" title="{{translate('employee_list')}}">list</span>
+                       <div class="nav-icon-box">         <span class="material-icons" title="{{translate('employee_list')}}">list</span></div>
                         <span class="link-title">{{translate('employee_list')}}</span>
                     </a>
                 </li>
@@ -559,7 +559,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li>
                     <a href="{{route('admin.employee.create')}}"
                        class="{{request()->is('admin/employee/create')?'active-menu':''}}">
-                        <span class="material-icons" title="{{translate('add_new_employee')}}">add</span>
+                       <div class="nav-icon-box"><span class="material-icons" title="{{translate('add_new_employee')}}">add</span></div>
                         <span class="link-title">{{translate('add_new_employee')}}</span>
                     </a>
                 </li>
@@ -575,7 +575,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li>
                     <a href="{{route('admin.transaction.list', ['trx_type'=>'all'])}}"
                        class="{{request()->is('admin/transaction/list')?'active-menu':''}}">
-                        <span class="material-icons" title="Customers">article</span>
+                       <div class="nav-icon-box">   <span class="material-icons" title="Customers">article</span></div>
                         <span class="link-title">{{translate('All Transactions')}}</span>
                     </a>
                 </li>
@@ -584,7 +584,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
             @can('report_view')
                 <li class="has-sub-item {{request()->is('admin/report/*')?'sub-menu-opened':''}}">
                     <a href="#" class="{{request()->is('admin/report/*')?'active-menu':''}}">
-                        <span class="material-icons" title="Customers">event_note</span>
+                    <div class="nav-icon-box">      <span class="material-icons" title="Customers">event_note</span></div>
                         <span class="link-title">{{translate('Reports')}}</span>
                     </a>
                     <ul class="nav sub-menu">
@@ -618,7 +618,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
             @can('analytics_view')
                 <li class="has-sub-item {{request()->is('admin/analytics/*')?'sub-menu-opened':''}}">
                     <a href="#" class="{{request()->is('admin/analytics/*')?'active-menu':''}}">
-                        <span class="material-icons" title="Customers">analytics</span>
+                    <div class="nav-icon-box">    <span class="material-icons" title="Customers">analytics</span></div>
                         <span class="link-title">{{translate('Analytics')}}</span>
                     </a>
                     <ul class="nav sub-menu">
@@ -647,7 +647,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li>
                     <a href="{{route('admin.business-settings.get-business-information')}}"
                        class="{{request()->is('admin/business-settings/get-business-information')?'active-menu':''}}">
-                        <span class="material-icons" title="{{translate('push_notification')}}">settings</span>
+                       <div class="nav-icon-box"> <span class="material-icons" title="{{translate('push_notification')}}">settings</span></div>
                         <span class="link-title"> {{translate('business_Settings')}}</span>
                     </a>
                 </li>
@@ -656,7 +656,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
             @canany(['subscription_settings_view', 'subscriber_view', 'subscription_package_view'])
                 <li class="has-sub-item {{request()->is('admin/subscription/*')?'sub-menu-opened':''}}">
                     <a href="#" class="{{request()->is('admin/subscription/*')?'active-menu':''}}">
-                        <span class="material-icons" title="{{translate('Subscription Management')}}">campaign</span>
+                    <div class="nav-icon-box">   <span class="material-icons" title="{{translate('Subscription Management')}}">campaign</span></div>
                         <span class="link-title">{{translate('Subscription Management')}}</span>
                     </a>
                     <ul class="nav sub-menu">
@@ -692,7 +692,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li class="has-sub-item {{request()->is('admin/business-page-setup/*') || request()->is('admin/social-media/*') || request()->is('admin/business-settings/get-landing-information*') ? 'sub-menu-opened':''}}">
                     <a href="#"
                        class="{{request()->is('admin/business-page-setup/*') || request()->is('admin/social-media/*') || request()->is('admin/business-settings/get-landing-information*') ?'active-menu':''}}">
-                        <span class="material-icons" title="Business pages">article</span>
+                       <div class="nav-icon-box">    <span class="material-icons" title="Business pages">article</span></div>
                         <span class="link-title">{{translate('Page & Media')}}</span>
                     </a>
                     <ul class="nav sub-menu">
@@ -729,7 +729,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li>
                     <a href="{{route('admin.business-settings.seo.setting', ['page_type' => 'error_logs'])}}"
                        class="{{request()->is('admin/business-settings/seo-setting') ?'active-menu':''}}">
-                        <span class="material-icons" title="Business 404 Logs">error</span>
+                       <div class="nav-icon-box"> <span class="material-icons" title="Business 404 Logs">error</span></div>
                         <span class="link-title">{{translate('404 Logs')}}</span>
                     </a>
                 </li>
@@ -739,7 +739,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li>
                     <a href="{{route('admin.business-settings.cron-job.list')}}"
                        class="{{request()->is('admin/business-settings/cron-job') ?'active-menu':''}}">
-                        <span class="material-icons" title="Cron Job">work</span>
+                       <div class="nav-icon-box"><span class="material-icons" title="Cron Job">work</span></div>
                         <span class="link-title">{{translate('Cron Job')}}</span>
                     </a>
                 </li>
@@ -754,7 +754,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li>
                     <a href="{{route('admin.business-settings.login.setup')}}"
                        class="{{request()->is('admin/business-settings/login/setup') ?'active-menu':''}}">
-                        <span class="material-icons" title="{{translate('Login Setup')}}">login</span>
+                       <div class="nav-icon-box"><span class="material-icons" title="{{translate('Login Setup')}}">login</span></div>
                         <span class="link-title">{{translate('Login Setup')}}</span>
                     </a>
                 </li>
@@ -764,7 +764,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li>
                     <a href="{{route('admin.configuration.language_setup')}}"
                        class="{{request()->is('admin/configuration/language-setup') || request()->is('admin/language/translate/*') ?'active-menu':''}}">
-                        <span class="material-icons" title="{{translate('Language Setup')}}">language</span>
+                       <div class="nav-icon-box"><span class="material-icons" title="{{translate('Language Setup')}}">language</span></div>
                         <span class="link-title">{{translate('Language Setup')}}</span>
                     </a>
                 </li>
@@ -774,7 +774,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li>
                     <a href="{{route('admin.business-settings.get-gallery-setup')}}"
                        class="{{request()->is('admin/business-settings/get-gallery-setup*')?'active-menu':''}}">
-                        <span class="material-icons" title="Page Settings">collections_bookmark</span>
+                       <div class="nav-icon-box"> <span class="material-icons" title="Page Settings">collections_bookmark</span></div>
                         <span class="link-title">{{translate('Gallery')}}</span>
                     </a>
                 </li>
@@ -783,7 +783,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li>
                     <a href="{{route('admin.business-settings.get-database-backup')}}"
                        class="{{request()->is('admin/business-settings/get-database-backup')?'active-menu':''}}">
-                        <span class="material-icons" title="Page Settings">backup</span>
+                       <div class="nav-icon-box"> <span class="material-icons" title="Page Settings">backup</span></div>
                         <span class="link-title">{{translate('Backup_Database')}}</span>
                     </a>
                 </li>
@@ -797,7 +797,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li>
                     <a href="{{ route('admin.configuration.third-party', 'firebase-configuration') }}"
                        class="{{ request()->is('admin/configuration/third-party/firebase-*') ? 'active-menu' : '' }}">
-                        <span class="material-icons" title="{{ translate('push_notification') }}">notifications</span>
+                       <div class="nav-icon-box"> <span class="material-icons" title="{{ translate('push_notification') }}">notifications</span></div>
                         <span class="link-title">{{ translate('Firebase') }}</span>
                     </a>
                 </li>
@@ -806,7 +806,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li>
                     <a href="{{ route('admin.configuration.third-party', ['webPage' => 'payment_config', 'type' => 'digital_payment']) }}"
                        class="{{ request()->is('admin/configuration/third-party/payment_config*') || request()->is('admin/configuration/offline*') ? 'active-menu' : '' }}">
-                        <span class="material-icons" title="{{ translate('Payment Methods') }}">payment</span>
+                       <div class="nav-icon-box"> <span class="material-icons" title="{{ translate('Payment Methods') }}">payment</span></div>
                         <span class="link-title">{{ translate('Payment Methods') }}</span>
                     </a>
                 </li>
@@ -815,7 +815,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li>
                     <a href="{{ route('admin.configuration.ai-configuration') }}"
                        class="{{ request()->is('admin/configuration/ai-configuration') ? 'active-menu' : '' }}">
-                        <span class="material-icons" title="{{ translate('AI_Configuration') }}">auto_awesome</span>
+                       <div class="nav-icon-box"> <span class="material-icons" title="{{ translate('AI_Configuration') }}">auto_awesome</span></div>
                         <span class="link-title">{{ translate('AI_Configuration') }}</span>
                     </a>
                 </li>
@@ -826,7 +826,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                        class="{{ (request()->is('admin/configuration/third-party/*') ||  request()->is('admin/configuration/ai-settings/*'))
                         && !request()->is('admin/configuration/third-party/firebase-*')
                         && !request()->is('admin/configuration/third-party/payment_config*') ? 'active-menu' : '' }}">
-                        <span class="material-icons" title="{{ translate('Other Configuration') }}">settings</span>
+                        <div class="nav-icon-box"><span class="material-icons" title="{{ translate('Other Configuration') }}">settings</span></div>
                         <span class="link-title">{{ translate('Other Configuration') }}</span>
                     </a>
                 </li>
@@ -839,7 +839,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li>
                     <a class="{{Request::is('admin/addon')?'active-menu':''}}"
                        href="{{route('admin.addon.index')}}" title="{{translate('system_addons')}}">
-                        <span class="material-icons" title="add_circle_outline">add_circle_outline</span>
+                       <div class="nav-icon-box"> <span class="material-icons" title="add_circle_outline">add_circle_outline</span></div>
                         <span class="link-title">{{translate('system_addons')}}</span>
                     </a>
                 </li>
@@ -872,7 +872,7 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
                 <li>
                     <a href="{{route('admin.add-on-activation.index')}}"
                        class="{{request()->is('admin/add-on-activation/index') ?'active-menu':''}}">
-                        <span class="material-icons" title="{{translate('Add-on Activation')}}">add_card</span>
+                       <div class="nav-icon-box"><span class="material-icons" title="{{translate('Add-on Activation')}}">add_card</span></div>
                         <span class="link-title">{{translate('Add-on Activation')}}</span>
                     </a>
                 </li>

@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 </div> -->
-                <div class="row mb-4 g-4">
+            <div class="row mb-4 g-4">
                 <div class="col-lg-3 col-sm-6">
                     <div class="card border-0 shadow-sm">
                         <div class="card-body p-3">
@@ -54,9 +54,10 @@
                                     <p class="text-sm mb-1 text-uppercase font-weight-bold text-muted" style="font-size:11px;">{{translate('total_earning')}}</p>
                                     <h4 class="mb-0 font-weight-bolder">{{with_currency_symbol(data_get($data[0], 'top_cards.total_commission_earning', 0) + data_get($data[0], 'top_cards.total_fee_earning', 0) + data_get($data[0], 'top_cards.total_subscription_earning', 0))}}</h4>
                                 </div>
-                                <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:linear-gradient(to top left,#ff0080,#7928ca);border-radius:12px;"
+                                <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:linear-gradient(195deg, #66BB6A, #43A047);border-radius:12px;"
                                 >
-                                    <img src="{{asset('public/assets/admin-module')}}/img/icons/customers.png"  style="width:24px;filter:invert(1)" alt="">
+                                <span class="material-icons" style="color:white;font-size:24px;">people</span>
+                                    <!-- <img src="{{asset('public/assets/admin-module')}}/img/icons/customers.png"  style="width:24px; filter:brightness(0) invert(1);mix-blend-mode:screen;" alt=""> -->
                                 </div>
                             </div>
                         </div>
@@ -70,9 +71,10 @@
                                     <p class="text-sm mb-1 text-uppercase font-weight-bold text-muted" style="font-size:11px;">{{translate('commission_earning')}}</p>
                                     <h4 class="mb-0 font-weight-bolder">{{with_currency_symbol(data_get($data[0], 'top_cards.total_commission_earning', 0))}}</h4>
                                 </div>
-                                <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:linear-gradient(to top left,#ff0080,#7928ca);border-radius:12px;"
+                                <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:linear-gradient(195deg, #EC407A, #D81B60);border-radius:12px;"
                                 >
-                                <img src="{{asset('public/assets/admin-module')}}/img/icons/total-earning.png"  style="width:24px;filter:invert(1)" alt="">
+                                <span class="material-icons" style="color:white;font-size:24px;">monetization_on</span>
+                                <!-- <img src="{{asset('public/assets/admin-module')}}/img/icons/total-earning.png"  style="width:24px;filter:brightness(0) invert(1);mix-blend-mode:screen;" alt=""> -->
                                 </div>
                             </div>
                         </div>
@@ -86,9 +88,11 @@
                                     <p class="text-sm mb-1 text-uppercase font-weight-bold text-muted" style="font-size:11px;">{{translate('Total Fee Earning')}}</p>
                                     <h4 class="mb-0 font-weight-bolder">{{with_currency_symbol(data_get($data[0], 'top_cards.total_fee_earning', 0))}}</h4>
                                 </div>
-                                <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:linear-gradient(to top left,#ff0080,#7928ca);border-radius:12px;"
-                                >                                    
-                                <img src="{{asset('public/assets/admin-module')}}/img/icons/providers.png"  style="width:24px;filter:invert(1)" alt="">
+                                <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:linear-gradient(195deg, #FFA726, #FB8C00);border-radius:12px;"
+                                >        
+                                <span class="material-icons" style="color:white;font-size:24px;">receipt</span>
+                            
+                                <!-- <img src="{{asset('public/assets/admin-module')}}/img/icons/providers.png"  style="width:24px;filter:brightness(0) invert(1);mix-blend-mode:screen;" alt=""> -->
                                 </div>
                             </div>
                         </div>
@@ -102,15 +106,18 @@
                                     <p class="text-sm mb-1 text-uppercase font-weight-bold text-muted" style="font-size:11px;">{{translate('providers')}}</p>
                                     <h4 class="mb-0 font-weight-bolder">{{$data[0]['top_cards']['total_provider']}}</h4>
                                 </div>
-                                <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:linear-gradient(to top left,#ff0080,#7928ca);border-radius:12px;"
+                                <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:linear-gradient(195deg, #42424a, #191919);border-radius:12px;"
                                 >
-                                 <img src="{{asset('public/assets/admin-module')}}/img/icons/services.png" style="width:24px;filter:invert(1)" alt="">
+                                <!-- <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:linear-gradient(to top left,#ff0080,#7928ca);border-radius:12px;"
+                                > -->
+                                <span class="material-icons" style="color:white;font-size:24px;">engineering</span>
+                                 <!-- <img src="{{asset('public/assets/admin-module')}}/img/icons/services.png" style="width:24px;filter:brightness(0) invert(1);mix-blend-mode:screen;" alt=""> -->
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
                 <div class="row g-4">
                     <div class="col-lg-9">
                         <div class="card earning-statistics">

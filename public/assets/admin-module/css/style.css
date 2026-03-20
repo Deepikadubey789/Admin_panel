@@ -3362,7 +3362,7 @@ svg.danger circle {
 
 .aside-body .nav li {
   font-size: 0.875rem;
-  padding: 0.875rem 0;
+  padding: 2px 0;
   display: block;
 }
 
@@ -3373,11 +3373,71 @@ svg.danger circle {
   position: relative;
 }
 
+/* ===== ADMIN SIDEBAR FIX - DOST KI CSS SE ===== */
 .aside-body .nav li > a {
-  display: flex;
-  gap: 8px;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 0.675rem 1rem !important;
+  border-radius: 0.5rem !important;
+  transition: all 0.2s ease !important;
+  color: #67748e !important;
 }
 
+.aside-body .nav li > a:hover {
+  background-color: var(--bg-color) !important;
+  color: #344767 !important;
+}
+
+.aside-body .nav li > a.active-menu {
+  background-color: #fff !important;
+  box-shadow: 0 20px 27px 0 rgba(0, 0, 0, 0.05) !important;
+  color: #344767 !important;
+  font-weight: 600 !important;
+}
+
+.nav-icon-box {
+  width: 32px !important;
+  height: 32px !important;
+  background: #fff !important;
+  border-radius: 0.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06) !important;
+  transition: all 0.2s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.active-menu .nav-icon-box {
+  background: linear-gradient(310deg, #17ad37 0%, #98ec2d 100%) !important;
+  color: #fff !important;
+}
+
+.active-menu .nav-icon-box .material-icons {
+  color: #fff !important;
+}
+
+.aside-body .nav li.nav-category {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  padding: 1.5rem 0.5rem 0.5rem !important;
+  color: #67748e !important;
+  opacity: 0.6 !important;
+  letter-spacing: 0.05rem !important;
+}
+/* ===== END ADMIN SIDEBAR FIX ===== */
+
+.aside-body .nav li > a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.675rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  color: #67748e;
+}
 .aside-body .nav li .link-title {
   flex-grow: 1;
   display: flex;
@@ -4385,7 +4445,7 @@ body.aside-folded.open-aside-folded .aside .aside-body li:hover i {
   flex-grow: 1;
 }
 
-.service-title {
+.service-title { 
   background-color: var(--bs-white);
   padding: 0.75rem;
   display: block;

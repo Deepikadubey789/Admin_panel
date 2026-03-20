@@ -1,29 +1,39 @@
-
 @push('css_or_js')
-
     <style>
-        /* Loader overlay */
         .search-loader-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            backdrop-filter: blur(4px); /* blur background */
-            background-color: rgba(255, 255, 255, 0.6); /* semi-transparent */
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            backdrop-filter: blur(4px);
+            background-color: rgba(255, 255, 255, 0.6);
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 10;
         }
 
-        /* Spinner */
+        .search-input {
+            background: white !important;
+            border: 2px solid #e91e8c !important;
+            border-radius: 8px !important;
+            padding: 6px 12px !important;
+            box-shadow: 0 0 0 3px rgba(233, 30, 140, 0.2),
+                        0 0 15px rgba(168, 85, 247, 0.3) !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .search-input:focus {
+            border-color: #a855f7 !important;
+            box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.3),
+                        0 0 20px rgba(233, 30, 140, 0.4) !important;
+            outline: none !important;
+        }
+
         .loader-spinner {
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #3498db;
+            border-top: 4px solid #f857a6;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 40px; height: 40px;
             animation: spin 1s linear infinite;
         }
 
@@ -32,11 +42,37 @@
             100% { transform: rotate(360deg); }
         }
 
-    </style>
+        /* Header base styles — Desktop (sidebar open) */
+        .header.fixed-top {
+            background: rgba(255,255,255,0.8) !important;
+            backdrop-filter: blur(10px) !important;
+            border-radius: 16px !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+            margin: 12px 16px 12px 296px !important;
+            width: calc(100% - 312px) !important;
+            transition: margin 0.3s ease, width 0.3s ease;
+        }
 
-@endpush
-<header class="header fixed-top">
-    <div class="container-fluid">
+        /* Tablet — sidebar hidden */
+        @media (max-width: 1199px) {
+            .header.fixed-top {
+                margin: 12px 16px 12px 16px !important;
+                width: calc(100% - 32px) !important;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 767px) {
+            .header.fixed-top {
+                margin: 8px 10px !important;
+                width: calc(100% - 20px) !important;
+                border-radius: 10px !important;
+            }
+        }
+    </style>
+    @endpush
+    <header class="header fixed-top">
+      <div class="container-fluid">
         <div class="row align-items-center justify-content-between">
             <div class="col-2">
                 <div class="header-toogle-menu">
@@ -123,7 +159,6 @@
                                 <a href="#" class="header-icon user-icon" data-bs-toggle="dropdown">
                                     <img width="30" height="30"
                                          src="{{auth()->user()->profile_image_full_path}}"
-
                                          class="rounded-circle aspect-square object-fit-cover" alt="{{ translate('profile_image') }}">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
